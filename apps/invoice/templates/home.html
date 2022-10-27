@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="container mt-20">
+  <h1 class="text-purple-600 text-center py-4 font-bold text-4xl">Invoice List</h1>
+    <div class="max-w-4xl mx-auto">
+      <div class="overflow-x-auto relative">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="py-3 px-6">
+                        Invoice ID
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Clinet Name
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Phone Number
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Address
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                      Status
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                      Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for invoice in invoices %}
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          {{ invoice.invoice_id }}
+                      </th>
+                      <td class="py-4 px-6">
+                          {{ invoice.client_name}}
+                      </td>
+                      <td class="py-4 px-6">
+                          {{ invoice.client_phone_number }}
+                      </td>
+                      <td class="py-4 px-6">
+                          {{ invoice.client_address }}
+                      </td>
+                      <td class="py-4 px-6">
+                        {{ invoice.status }}
+                      </td>
+                      <td class="py-4 px-6">
+                        <a href="{{ invoice.get_absolute_url }}" class="text-blue-600 font-medium">
+                          Detail
+                        </a>
+                      </td>
+                  </tr>
+                {% endfor %}
+                  
+            </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+{% endblock content %}

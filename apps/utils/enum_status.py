@@ -1,4 +1,4 @@
-from enum import IntEnum
+from enum import IntEnum, Enum
 
 
 class ServiceEnum(IntEnum):
@@ -26,9 +26,9 @@ class OrderStatus(IntEnum):
         return [(key.value, key.name) for key in cls]
 
 
-class InvoiceStatus(IntEnum):
-    PAID = 1
-    DUE = 2
+class InvoiceStatus(Enum):
+    PAID = "Paid"
+    DUE = "Due"
 
     @classmethod
     def get_invoice_status(cls):
